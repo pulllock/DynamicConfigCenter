@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.cxis.dcc.dao.mapper.ConfigInstDOMapper">
+  <resultMap id="BaseResultMap" type="me.cxis.dcc.dao.model.ConfigInstDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="version" jdbcType="SMALLINT" property="version" />
+    <result column="config_id" jdbcType="BIGINT" property="configId" />
+    <result column="env_id" jdbcType="BIGINT" property="envId" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, created_time, modified_time, version, config_id, env_id, value
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dcc_config_inst
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from dcc_config_inst
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+    insert into dcc_config_inst (id, created_time, modified_time, 
+      version, config_id, env_id, 
+      value)
+    values (#{id,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=SMALLINT}, #{configId,jdbcType=BIGINT}, #{envId,jdbcType=BIGINT}, 
+      #{value,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+    insert into dcc_config_inst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="configId != null">
+        config_id,
+      </if>
+      <if test="envId != null">
+        env_id,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=SMALLINT},
+      </if>
+      <if test="configId != null">
+        #{configId,jdbcType=BIGINT},
+      </if>
+      <if test="envId != null">
+        #{envId,jdbcType=BIGINT},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+    update dcc_config_inst
+    <set>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=SMALLINT},
+      </if>
+      <if test="configId != null">
+        config_id = #{configId,jdbcType=BIGINT},
+      </if>
+      <if test="envId != null">
+        env_id = #{envId,jdbcType=BIGINT},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+    update dcc_config_inst
+    set created_time = #{createdTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=SMALLINT},
+      config_id = #{configId,jdbcType=BIGINT},
+      env_id = #{envId,jdbcType=BIGINT},
+      value = #{value,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
