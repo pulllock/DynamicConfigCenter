@@ -1,0 +1,44 @@
+package me.cxis.dcc;
+
+import me.cxis.dcc.cache.ConfigCache;
+
+/**
+ * 客户端直接使用的入口
+ */
+public class DCC {
+
+    private static final ConfigCache CONFIG_CACHE = ConfigCache.getInstance();
+
+    private DCC() {
+
+    }
+
+    public static String get(String key) {
+        return CONFIG_CACHE.get(key);
+    }
+
+    public static String get(String key, String defaultValue) {
+        String value = CONFIG_CACHE.get(key);
+        return value == null ? defaultValue : value;
+    }
+
+    public static int getIntValue(String key) {
+        String value = CONFIG_CACHE.get(key);
+        return Integer.parseInt(value);
+    }
+
+    public static int getIntValue(String key, int defaultValue) {
+        String value = CONFIG_CACHE.get(key);
+        return value == null ? defaultValue : Integer.parseInt(value);
+    }
+
+    public static long getLongValue(String key) {
+        String value = CONFIG_CACHE.get(key);
+        return Long.parseLong(value);
+    }
+
+    public static long getIntValue(String key, long defaultValue) {
+        String value = CONFIG_CACHE.get(key);
+        return value == null ? defaultValue : Long.parseLong(value);
+    }
+}
