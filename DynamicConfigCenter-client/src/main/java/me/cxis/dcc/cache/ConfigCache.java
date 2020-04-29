@@ -1,11 +1,12 @@
 package me.cxis.dcc.cache;
 
+import me.cxis.dcc.listener.ConfigListener;
 import me.cxis.dcc.loader.ConfigLoaderDelegate;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class ConfigCache {
+public class ConfigCache implements ConfigListener {
 
     private static volatile ConfigCache configCache;
 
@@ -14,7 +15,7 @@ public class ConfigCache {
     private static ConfigLoaderDelegate configLoaderDelegate = ConfigLoaderDelegate.getInstance();
 
     private ConfigCache() {
-
+        configLoaderDelegate.addConfigListener(this);
     }
 
     public static ConfigCache getInstance() {
@@ -35,5 +36,11 @@ public class ConfigCache {
             cachedConfigs.put(key, value == null ? "" : value);
         }
         return value;
+    }
+
+    @Override
+    public void configUpdate(String key, String value) {
+        System.out.println("====");
+        cachedConfigs.put(key, value == null ? "" : value);
     }
 }

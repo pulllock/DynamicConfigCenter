@@ -44,7 +44,7 @@ public class ZookeeperConfigLoader extends AbstractConfigLoader {
         // 监听变化
         curatorClient
             .getCuratorListenable()
-            .addListener(new ZkWatcher());
+            .addListener(new ZkWatcher(this));
 
         curatorClient.start();
     }
@@ -52,7 +52,7 @@ public class ZookeeperConfigLoader extends AbstractConfigLoader {
     @Override
     protected String doGet(String key) {
         try {
-            byte[] data = curatorClient.getData().forPath(key);
+            byte[] data = curatorClient.getData().watched().forPath(key);
             if (data != null) {
                 return new String(data, StandardCharsets.UTF_8);
             }
@@ -70,5 +70,9 @@ public class ZookeeperConfigLoader extends AbstractConfigLoader {
             key = key.substring(prefix.length());
         }
         return ROOT_PATH + PATH_SEPARATOR + appName + PATH_SEPARATOR + key;
+    }
+
+    public void configUpdate(String key, String value) {
+        configListeners.forEach(configListener -> configListener.configUpdate(key, value));
     }
 }

@@ -1,5 +1,8 @@
 package me.cxis.dcc.loader;
 
+import me.cxis.dcc.cache.ConfigCache;
+import me.cxis.dcc.listener.ConfigListener;
+
 public class ConfigLoaderDelegate {
 
     private ConfigLoader configLoader;
@@ -36,5 +39,9 @@ public class ConfigLoaderDelegate {
      */
     public String get(String key) {
         return configLoader.get(key);
+    }
+
+    public void addConfigListener(ConfigListener configListener) {
+        configLoader.addConfigListener(configListener);
     }
 }
