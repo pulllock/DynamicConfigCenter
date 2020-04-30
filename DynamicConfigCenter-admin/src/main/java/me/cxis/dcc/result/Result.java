@@ -1,25 +1,28 @@
 package me.cxis.dcc.result;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import me.cxis.dcc.model.ErrorCode;
 
 import java.io.Serializable;
 
+@ApiModel(description = "结果信息")
 public class Result<T> implements Serializable {
 
     private static final long serialVersionUID = 3853420960188413352L;
 
+    @ApiModelProperty(value = "是否成功")
     private boolean success = true;
 
+    @ApiModelProperty(value = "结果码")
     private int code;
 
+    @ApiModelProperty(value = "结果信息")
     private String msg;
 
+    @ApiModelProperty(value = "结果")
     private T model;
-
-    private int nonce;
-
-    private String sign;
 
     public Result() {
     }
@@ -68,22 +71,6 @@ public class Result<T> implements Serializable {
         this.success = success;
     }
 
-    public int getNonce() {
-        return nonce;
-    }
-
-    public void setNonce(int nonce) {
-        this.nonce = nonce;
-    }
-
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
     @Override
     public String toString() {
         return "Result{" +
@@ -91,8 +78,6 @@ public class Result<T> implements Serializable {
             ", code=" + code +
             ", msg='" + msg + '\'' +
             ", model=" + model +
-            ", nonce=" + nonce +
-            ", sign='" + sign + '\'' +
             '}';
     }
 }

@@ -30,7 +30,7 @@ app:
   name: dcc
 
 curator:
-  connectString: 127.0.0.1"2181
+  connectString: 127.0.0.1:2181
   sessionTimeoutMs: 5000
   connectionTimeoutMs: 5000
   retryTimes: 3
