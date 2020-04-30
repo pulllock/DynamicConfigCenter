@@ -1,0 +1,6 @@
+logging:
+  file:
+    path: ./dcc-sample/logs/
+
+server:
+  port: 8082

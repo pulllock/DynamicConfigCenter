@@ -1,5 +1,6 @@
 package me.cxis.dcc.cache;
 
+import me.cxis.dcc.listener.ConfigEvent;
 import me.cxis.dcc.listener.ConfigListener;
 import me.cxis.dcc.loader.ConfigLoaderDelegate;
 
@@ -39,8 +40,7 @@ public class ConfigCache implements ConfigListener {
     }
 
     @Override
-    public void configUpdate(String key, String value) {
-        System.out.println("====");
-        cachedConfigs.put(key, value == null ? "" : value);
+    public void configUpdate(ConfigEvent configEvent) {
+        cachedConfigs.put(configEvent.getKey(), configEvent.getValue() == null ? "" : configEvent.getValue());
     }
 }

@@ -13,4 +13,6 @@ public interface ConfigLoader {
     String parseKey(String key);
 
     void addConfigListener(ConfigListener configListener);
+
+    void addConfigListener(String key, ConfigListener configListener);
 }

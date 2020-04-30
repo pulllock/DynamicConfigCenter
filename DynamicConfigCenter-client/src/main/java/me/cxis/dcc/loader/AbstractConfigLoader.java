@@ -1,13 +1,18 @@
 package me.cxis.dcc.loader;
 
 import me.cxis.dcc.listener.ConfigListener;
+import sun.security.krb5.Config;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class AbstractConfigLoader implements ConfigLoader {
 
     protected List<ConfigListener> configListeners = new ArrayList<>();
+
+    protected Map<String, ConfigListener> configListenerMap = new ConcurrentHashMap<>();
 
     public AbstractConfigLoader() {
         init();
@@ -26,5 +31,10 @@ public abstract class AbstractConfigLoader implements ConfigLoader {
     @Override
     public void addConfigListener(ConfigListener configListener) {
         configListeners.add(configListener);
+    }
+
+    @Override
+    public void addConfigListener(String key, ConfigListener configListener) {
+        configListenerMap.put(key, configListener);
     }
 }
