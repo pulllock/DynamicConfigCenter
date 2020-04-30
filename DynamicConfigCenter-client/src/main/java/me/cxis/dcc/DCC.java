@@ -1,6 +1,8 @@
 package me.cxis.dcc;
 
 import me.cxis.dcc.cache.ConfigCache;
+import me.cxis.dcc.listener.ConfigListener;
+import me.cxis.dcc.loader.ConfigLoaderDelegate;
 
 /**
  * 客户端直接使用的入口
@@ -8,6 +10,8 @@ import me.cxis.dcc.cache.ConfigCache;
 public class DCC {
 
     private static final ConfigCache CONFIG_CACHE = ConfigCache.getInstance();
+
+    private static ConfigLoaderDelegate configLoaderDelegate = ConfigLoaderDelegate.getInstance();
 
     private DCC() {
 
@@ -40,5 +44,9 @@ public class DCC {
     public static long getIntValue(String key, long defaultValue) {
         String value = CONFIG_CACHE.get(key);
         return value == null ? defaultValue : Long.parseLong(value);
+    }
+
+    public static void addConfigListener(String key, ConfigListener configListener) {
+        configLoaderDelegate.addConfigListener(key, configListener);
     }
 }

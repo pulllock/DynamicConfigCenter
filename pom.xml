@@ -18,6 +18,7 @@
     <modules>
         <module>DynamicConfigCenter-admin</module>
         <module>DynamicConfigCenter-client</module>
+        <module>DynamicConfigCenter-sample</module>
     </modules>
 
     <properties>

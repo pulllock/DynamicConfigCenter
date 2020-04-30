@@ -1,5 +1,7 @@
 package me.cxis.dcc.loader;
 
+import me.cxis.dcc.listener.ConfigEvent;
+import me.cxis.dcc.listener.ConfigListener;
 import me.cxis.dcc.support.InitClient;
 import me.cxis.dcc.support.ZkWatcher;
 import org.apache.curator.framework.CuratorFramework;
@@ -41,7 +43,7 @@ public class ZookeeperConfigLoader extends AbstractConfigLoader {
                 }
             });
 
-        // 监听变化
+        // 监听变化，可以改用NodeCacheListener
         curatorClient
             .getCuratorListenable()
             .addListener(new ZkWatcher(this));
@@ -73,6 +75,12 @@ public class ZookeeperConfigLoader extends AbstractConfigLoader {
     }
 
     public void configUpdate(String key, String value) {
-        configListeners.forEach(configListener -> configListener.configUpdate(key, value));
+        ConfigEvent configEvent = new ConfigEvent(key, value);
+        configListeners.forEach(configListener -> configListener.configUpdate(configEvent));
+
+        ConfigListener configListener = configListenerMap.get(key);
+        if (configListener != null) {
+            configListener.configUpdate(configEvent);
+        }
     }
 }

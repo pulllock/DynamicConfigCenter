@@ -44,4 +44,8 @@ public class ConfigLoaderDelegate {
     public void addConfigListener(ConfigListener configListener) {
         configLoader.addConfigListener(configListener);
     }
+
+    public void addConfigListener(String key, ConfigListener configListener) {
+        configLoader.addConfigListener(key, configListener);
+    }
 }
