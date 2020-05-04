@@ -121,4 +121,13 @@
       value = #{value,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <update id="updateByConfigAndEnvId" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+    update dcc_config_inst
+    set modified_time = now(),
+        version = version + 1,
+        value = #{value,jdbcType=VARCHAR}
+    where config_id = #{configId,jdbcType=BIGINT}
+      and env_id = #{envId,jdbcType=BIGINT}
+  </update>
 </mapper>

@@ -59,6 +59,11 @@ public class ZookeeperConfigLoader extends AbstractConfigLoader {
                 return new String(data, StandardCharsets.UTF_8);
             }
         } catch (Exception e) {
+            try {
+                curatorClient.checkExists().watched().forPath(key);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
             e.printStackTrace();
         }
         return null;

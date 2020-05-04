@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: root
-    password: 123456
+    password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/dcc?serverTimezone=GMT%2B8
     type: com.alibaba.druid.pool.DruidDataSource
@@ -35,3 +35,5 @@ curator:
   connectionTimeoutMs: 5000
   retryTimes: 3
   sleepMsBetweenRetries: 1000
+server:
+  port: 8081

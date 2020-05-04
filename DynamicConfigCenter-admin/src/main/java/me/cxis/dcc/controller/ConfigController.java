@@ -35,4 +35,14 @@ public class ConfigController {
         return result;
     }
 
+    @ApiOperation(value = "更新配置", notes = "更新配置和配置实例，同步更新Zookeeper节点")
+    @ApiImplicitParam(name = "config", value = "配置", dataType = "ConfigVO", paramType = "body", required = true)
+    @PostMapping("/updateConfig")
+    public Result<Boolean> updateConfig(@RequestBody ConfigVO config) {
+        // TODO 校验
+        Result<Boolean> result = new Result<>();
+        result.setModel(configManager.updateConfig(config));
+        return result;
+    }
+
 }

@@ -10,6 +10,9 @@ public class ConfigVO implements Serializable {
 
     private static final long serialVersionUID = 980055193373837391L;
 
+    @ApiModelProperty(value = "配置的ID")
+    private Long id;
+
     @ApiModelProperty(value = "配置所属组ID")
     private Long groupId;
 
@@ -27,6 +30,14 @@ public class ConfigVO implements Serializable {
 
     @ApiModelProperty(value = "配置的值")
     private String value;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getGroupId() {
         return groupId;
@@ -79,12 +90,13 @@ public class ConfigVO implements Serializable {
     @Override
     public String toString() {
         return "ConfigVO{" +
-            "groupId=" + groupId +
-            ", envId=" + envId +
-            ", type=" + type +
-            ", key='" + key + '\'' +
-            ", desc='" + desc + '\'' +
-            ", value='" + value + '\'' +
-            '}';
+                "id=" + id +
+                ", groupId=" + groupId +
+                ", envId=" + envId +
+                ", type=" + type +
+                ", key='" + key + '\'' +
+                ", desc='" + desc + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 }
