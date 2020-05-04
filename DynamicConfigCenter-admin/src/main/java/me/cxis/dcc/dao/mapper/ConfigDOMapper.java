@@ -1,6 +1,7 @@
 package me.cxis.dcc.dao.mapper;
 
 import me.cxis.dcc.dao.model.ConfigDO;
+import org.apache.ibatis.annotations.Param;
 
 public interface ConfigDOMapper {
 
@@ -15,4 +16,6 @@ public interface ConfigDOMapper {
     int updateByPrimaryKeySelective(ConfigDO record);
 
     int updateByPrimaryKey(ConfigDO record);
+
+    ConfigDO selectByKeyAndGroupId(@Param("key") String key, @Param("groupId") Long groupId);
 }

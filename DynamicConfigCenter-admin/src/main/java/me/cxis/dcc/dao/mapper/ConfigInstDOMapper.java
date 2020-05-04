@@ -15,4 +15,6 @@ public interface ConfigInstDOMapper {
     int updateByPrimaryKeySelective(ConfigInstDO record);
 
     int updateByPrimaryKey(ConfigInstDO record);
+
+    int updateByConfigAndEnvId(ConfigInstDO configInstDO);
 }
