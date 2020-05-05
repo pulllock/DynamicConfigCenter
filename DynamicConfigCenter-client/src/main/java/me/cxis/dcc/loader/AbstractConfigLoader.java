@@ -1,7 +1,6 @@
 package me.cxis.dcc.loader;
 
 import me.cxis.dcc.listener.ConfigListener;
-import sun.security.krb5.Config;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -17,5 +17,5 @@ DynamicConfigCenter 动态配置中心，从头开始实现一个DynamicConfigCe
 # TODO
 
 - DynamicConfigCenter-client增加当前机器信息上报
-- DynamicConfigCenter-client整合Spring
+- DynamicConfigCenter-client自定义注解
 - DynamicConfigCenter-admin区分环境
