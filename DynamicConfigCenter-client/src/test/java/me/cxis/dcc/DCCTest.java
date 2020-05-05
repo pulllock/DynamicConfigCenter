@@ -13,7 +13,7 @@ public class DCCTest {
     public void testGet() {
         System.out.println(DCC.get("TestProject.user.prefix"));
 
-        while (true){
+       for (int i = 0; i < 10; i++) {
             try {
                 Thread.sleep(1000);
                 System.out.println(DCC.get("TestProject.user.prefix"));
@@ -35,7 +35,7 @@ public class DCCTest {
             }
         });
 
-        while (true){
+        for (int i = 0; i < 10; i++) {
             try {
                 Thread.sleep(1000);
                 System.out.println(userPrefix);
