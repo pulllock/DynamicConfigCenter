@@ -38,6 +38,14 @@ public class DccConfigPlaceholderConfigurer extends PropertyPlaceholderConfigure
         this.beanFactory = beanFactory;
     }
 
+    /**
+     * 在Spring初始化Bean的时候，会调用此方法来返回占位符的实际值，
+     * 这里先看下Environment中是否存在相关的值，
+     * 再看Zookeeper中是否有相关值
+     * @param placeholder
+     * @param props
+     * @return
+     */
     @Override
     protected String resolvePlaceholder(String placeholder, Properties props) {
         if (environment.containsProperty(placeholder)) {
@@ -46,6 +54,12 @@ public class DccConfigPlaceholderConfigurer extends PropertyPlaceholderConfigure
         return configLoaderDelegate.get(placeholder);
     }
 
+    /**
+     * 这一步是在解析BeanDefinition的时候用来收集@Value注解的属性以及占位符
+     * @param beanFactoryToProcess
+     * @param properties
+     * @throws BeansException
+     */
     @Override
     protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties properties) throws BeansException {
         String[] beanNames = beanFactoryToProcess.getBeanDefinitionNames();
@@ -102,6 +116,11 @@ public class DccConfigPlaceholderConfigurer extends PropertyPlaceholderConfigure
         this.environment = environment;
     }
 
+    /**
+     * Zookeeper的值变化之后，这里会收到通知，
+     * 如果是之前收集到的占位符对应的Bean，使用反射动态改变对应值
+     * @param configEvent
+     */
     @Override
     public void configUpdate(ConfigEvent configEvent) {
         String key = configEvent.getKey();
