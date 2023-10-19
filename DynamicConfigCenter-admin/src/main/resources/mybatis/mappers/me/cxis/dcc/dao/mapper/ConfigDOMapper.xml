@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.cxis.dcc.dao.mapper.ConfigDOMapper">
-  <resultMap id="BaseResultMap" type="me.cxis.dcc.dao.model.ConfigDO">
+<mapper namespace="fun.pullock.dcc.dao.mapper.ConfigDOMapper">
+  <resultMap id="BaseResultMap" type="fun.pullock.dcc.dao.model.ConfigDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="created_time"  jdbcType="TIMESTAMP" property="createdTime" />
     <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
@@ -30,7 +30,7 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="me.cxis.dcc.dao.model.ConfigDO">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="fun.pullock.dcc.dao.model.ConfigDO">
     insert into dcc_config (id, created_time, modified_time, 
       version, `key`, type,
       `desc`, group_id)
@@ -39,7 +39,7 @@
       #{desc,jdbcType=VARCHAR}, #{groupId,jdbcType=BIGINT})
   </insert>
 
-  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="me.cxis.dcc.dao.model.ConfigDO">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="fun.pullock.dcc.dao.model.ConfigDO">
     insert into dcc_config
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -95,7 +95,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="me.cxis.dcc.dao.model.ConfigDO">
+  <update id="updateByPrimaryKeySelective" parameterType="fun.pullock.dcc.dao.model.ConfigDO">
     update dcc_config
     <set>
       <if test="createdTime != null">
@@ -123,7 +123,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="me.cxis.dcc.dao.model.ConfigDO">
+  <update id="updateByPrimaryKey" parameterType="fun.pullock.dcc.dao.model.ConfigDO">
     update dcc_config
     set created_time = #{createdTime,jdbcType=TIMESTAMP},
       modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
@@ -135,7 +135,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="selectByKeyAndGroupId" resultType="me.cxis.dcc.dao.model.ConfigDO">
+  <select id="selectByKeyAndGroupId" resultType="fun.pullock.dcc.dao.model.ConfigDO">
     select
     <include refid="Base_Column_List" />
       from dcc_config

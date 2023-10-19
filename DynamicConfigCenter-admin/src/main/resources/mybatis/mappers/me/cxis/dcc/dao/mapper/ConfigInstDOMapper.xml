@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.cxis.dcc.dao.mapper.ConfigInstDOMapper">
-  <resultMap id="BaseResultMap" type="me.cxis.dcc.dao.model.ConfigInstDO">
+<mapper namespace="fun.pullock.dcc.dao.mapper.ConfigInstDOMapper">
+  <resultMap id="BaseResultMap" type="fun.pullock.dcc.dao.model.ConfigInstDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
@@ -27,7 +27,7 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-  <insert id="insert" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+  <insert id="insert" parameterType="fun.pullock.dcc.dao.model.ConfigInstDO">
     insert into dcc_config_inst (id, created_time, modified_time, 
       version, config_id, env_id, 
       value)
@@ -36,7 +36,7 @@
       #{value,jdbcType=VARCHAR})
   </insert>
 
-  <insert id="insertSelective" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+  <insert id="insertSelective" parameterType="fun.pullock.dcc.dao.model.ConfigInstDO">
     insert into dcc_config_inst
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -86,7 +86,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+  <update id="updateByPrimaryKeySelective" parameterType="fun.pullock.dcc.dao.model.ConfigInstDO">
     update dcc_config_inst
     <set>
       <if test="createdTime != null">
@@ -111,7 +111,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+  <update id="updateByPrimaryKey" parameterType="fun.pullock.dcc.dao.model.ConfigInstDO">
     update dcc_config_inst
     set created_time = #{createdTime,jdbcType=TIMESTAMP},
       modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
@@ -122,7 +122,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <update id="updateByConfigAndEnvId" parameterType="me.cxis.dcc.dao.model.ConfigInstDO">
+  <update id="updateByConfigAndEnvId" parameterType="fun.pullock.dcc.dao.model.ConfigInstDO">
     update dcc_config_inst
     set modified_time = now(),
         version = version + 1,

@@ -3,12 +3,12 @@ DynamicConfigCenter 动态配置中心，从头开始实现一个DynamicConfigCe
 
 # 文档列表
 
-- [DynamicConfigCenter设计的思路](https://cxis.me/2020/04/25/DynamicConfigCenter设计的思路/)
-- [DynamicConfigCenter设计文档](https://cxis.me/2020/04/26/DynamicConfigCenter设计文档/)
-- [DynamicConfigCenter中Zookeeper相关操作](https://cxis.me/2020/04/27/DynamicConfigCenter中Zookeeper相关操作/)
-- [DynamicConfigCenter中Zookeeper监听机制使用](https://cxis.me/2020/04/28/DynamicConfigCenter中Zookeeper监听机制使用/)
-- [DynamicConfigCenter中的监听器模式](https://cxis.me/2020/04/28/DynamicConfigCenter中的监听器模式/)
-- [DynamicConfigCenter中基于Spring的Schema扩展功能](https://cxis.me/2020/05/04/DynamicConfigCenter中基于Spring的Schema扩展功能/)
+- [DynamicConfigCenter设计的思路](http://www.pullock.fun/2020/04/25/DynamicConfigCenter设计的思路/)
+- [DynamicConfigCenter设计文档](http://www.pullock.fun/2020/04/26/DynamicConfigCenter设计文档/)
+- [DynamicConfigCenter中Zookeeper相关操作](http://www.pullock.fun/2020/04/27/DynamicConfigCenter中Zookeeper相关操作/)
+- [DynamicConfigCenter中Zookeeper监听机制使用](http://www.pullock.fun/2020/04/28/DynamicConfigCenter中Zookeeper监听机制使用/)
+- [DynamicConfigCenter中的监听器模式](http://www.pullock.fun/2020/04/28/DynamicConfigCenter中的监听器模式/)
+- [DynamicConfigCenter中基于Spring的Schema扩展功能](http://www.pullock.fun/2020/05/04/DynamicConfigCenter中基于Spring的Schema扩展功能/)
 - [DynamicConfigCenter总结]()
 
 # 运行
@@ -40,11 +40,11 @@ DCC.get("xxxxxx");
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:dcc="https://www.cxis.me/schema/dcc"
+       xmlns:dcc="http://www.pullock.fun/schema/dcc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
-       https://www.cxis.me/schema/dcc
-       https://www.cxis.me/schema/dcc/dcc-config.xsd
+       http://www.pullock.fun/schema/dcc
+       http://www.pullock.fun/schema/dcc/dcc-config.xsd
 ">
 
     <dcc:config/>

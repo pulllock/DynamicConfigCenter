@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.cxis.dcc.dao.mapper.EnvDOMapper">
-  <resultMap id="BaseResultMap" type="me.cxis.dcc.dao.model.EnvDO">
+<mapper namespace="fun.pullock.dcc.dao.mapper.EnvDOMapper">
+  <resultMap id="BaseResultMap" type="fun.pullock.dcc.dao.model.EnvDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
@@ -26,7 +26,7 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-  <insert id="insert" parameterType="me.cxis.dcc.dao.model.EnvDO">
+  <insert id="insert" parameterType="fun.pullock.dcc.dao.model.EnvDO">
     insert into dcc_env (id, created_time, modified_time, 
       version, name, `desc`
       )
@@ -35,7 +35,7 @@
       )
   </insert>
 
-  <insert id="insertSelective" parameterType="me.cxis.dcc.dao.model.EnvDO">
+  <insert id="insertSelective" parameterType="fun.pullock.dcc.dao.model.EnvDO">
     insert into dcc_env
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -79,7 +79,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="me.cxis.dcc.dao.model.EnvDO">
+  <update id="updateByPrimaryKeySelective" parameterType="fun.pullock.dcc.dao.model.EnvDO">
     update dcc_env
     <set>
       <if test="createdTime != null">
@@ -101,7 +101,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="me.cxis.dcc.dao.model.EnvDO">
+  <update id="updateByPrimaryKey" parameterType="fun.pullock.dcc.dao.model.EnvDO">
     update dcc_env
     set created_time = #{createdTime,jdbcType=TIMESTAMP},
       modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
